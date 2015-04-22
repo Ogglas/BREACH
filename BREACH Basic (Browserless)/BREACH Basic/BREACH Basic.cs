@@ -40,6 +40,9 @@ namespace BREACHBasic
             int AirbagExpansions = 0;
             bool ForceRecoveryMode = false;
 
+            System.Net.ServicePointManager.ServerCertificateValidationCallback =
+    ((sender, certificate, chain, sslPolicyErrors) => certificate.Subject.Contains("malbot.net"));
+
             // Initialize
             HttpGet(TargetURL + "&Initialize");
             DeletePacketLog();
